@@ -28,7 +28,7 @@ parameter DEPTH = 32;
 
     assign DATA = (OE) ? WIREOUT : {WIDTH{1'bz}};
 
-    //WRITE process
+    //READ process
     always_comb begin
         if (!CS_ && OE) 
             WIREOUT = MEM[ADDR];
@@ -36,7 +36,7 @@ parameter DEPTH = 32;
             WIREOUT = {WIDTH{1'bz}};
     end
 
-    //READ process
+    //WRITE process
     always @(posedge CLK) begin
         if (!CS_ && !OE && WS)
             MEM[ADDR] <= DATA;
